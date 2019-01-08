@@ -17,7 +17,7 @@ module ActsAsFollower #:nodoc:
 
       # Returns true if this instance is following the object passed as an argument.
       def following?(followable)
-        0 < Follow.unblocked.for_follower(self).for_followable(followable).count
+        Follow.unblocked.for_follower(self).for_followable(followable).first.present?
       end
 
       # Returns the number of objects this instance is following.
